@@ -43,7 +43,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install python3-pip
           pip install -r requirements.txt
-          zip -r9 ./dnc_shorter_payload_function.zip -x ./src/* requirements.txt setup.cfg
+          zip -r9 dnc_shorter_payload_function.zip -x src/* requirements.txt setup.cfg
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
