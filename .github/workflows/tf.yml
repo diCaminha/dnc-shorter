@@ -38,6 +38,13 @@ jobs:
         if: steps.plan.outcome == 'failure'
         run: exit 1
 
+      - name: Prepare project .zip
+        run: |
+          sudo apt-get update
+          sudo apt-get install python3-pip
+          pip install -r requirements.txt
+          zip dnc_shorter_payload_function.zip ./
+
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: terraform apply -auto-approve
